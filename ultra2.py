@@ -16,27 +16,27 @@ print("Measuring Distance...")
 
 try :
     while True:
-       GPIO.output(pin_trigger, GPIO.HIGH) # shoot the signal for 10 us
-       time.sleep(.00001) # 10 us
-       GPIO.output(pin_trigger, GPIO.LOW)
+        GPIO.output(pin_trigger, GPIO.HIGH) # shoot the signal for 10 us
+        time.sleep(.00001) # 10 us
+        GPIO.output(pin_trigger, GPIO.LOW)
 
-       # waiting for the return signal
-       while GPIO.input(pin_echo) == GPIO.LOW :
-           pass
-       start = time.time()
+        # waiting for the return signal
+        while GPIO.input(pin_echo) == GPIO.LOW :
+            pass
+        start = time.time()
 
-       # receiving signal
-       while GPIO.input(pin_echo) == GPIO.HIGH :
-           pass
-       stop = time.time()
+        # receiving signal
+    while GPIO.input(pin_echo) == GPIO.HIGH :
+        pass
+    stop = time.time()
 
-       d = (stop - start) * 170 * 100 # cm, speed of sound 340 m/s in air,  d = 340/2
-       print(format(d, ".2f") + " cm")
+    d = (stop - start) * 170 * 100 # cm, speed of sound 340 m/s in air,  d = 340/2
+    print(format(d, ".2f") + " cm")
 
-       time.sleep(.5)
+    time.sleep(.5)
 
 except KeyboardInterrupt:
-    print("\nInterrupted!")
+print("\nInterrupted!")
 
 finally:
-    GPIO.cleanup()
+GPIO.cleanup()
